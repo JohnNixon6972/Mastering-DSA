@@ -1,5 +1,5 @@
 // Code Written by : John Nixon
-// Date: 31:10:2022  Time: 18:27:41
+// Date: 01:11:2022  Time: 19:43:50
 // Copyrights are applicable
 #include <bits/stdc++.h>
 using namespace std;
@@ -59,28 +59,26 @@ void __f(const char *names, Arg1 &&arg1, Args &&...args)
 const int N = 200005;
 void solve()
 {
-    int n, k;
-    cin >> n >> k;
-    vi a;
-    for (int i = 0; i < n; i++)
+    int a, b;
+    cin >> a >> b;
+    if (a == b)
     {
-        int x;
-        cin >> x;
-        a.pb(x);
+        cout << 0 << endl;
+        return;
     }
 
-    sort(all(a));
-    int sum = 0;
-    for (int i = k; i < n - k; i++)
-    {
-        sum += a[i];
+    int steps = 0;
+    while(b % a !=0){
+        a /= 2;
+        steps++;
     }
-
-    n -= 2 * k;
-
-    double ans = sum / (double)n;
-
-    cout << fixed << setprecision(6) << ans << endl;
+    while (b!=a)    
+    {
+        a *= 2;
+        steps++;
+    }
+    cout<<steps<<endl;
+    
 }
 int32_t main()
 {

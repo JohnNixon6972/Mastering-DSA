@@ -1,5 +1,5 @@
 // Code Written by : John Nixon
-// Date: 31:10:2022  Time: 18:27:41
+// Date: 31:10:2022  Time: 18:36:09
 // Copyrights are applicable
 #include <bits/stdc++.h>
 using namespace std;
@@ -61,7 +61,7 @@ void solve()
 {
     int n, k;
     cin >> n >> k;
-    vi a;
+    deque<int> a;
     for (int i = 0; i < n; i++)
     {
         int x;
@@ -70,17 +70,17 @@ void solve()
     }
 
     sort(all(a));
-    int sum = 0;
-    for (int i = k; i < n - k; i++)
-    {
-        sum += a[i];
+
+    n=n-1;
+    while(a.size() > 1 and k){
+        a.pop_front();
+        k--;
     }
 
-    n -= 2 * k;
+    int ans = a[0];
 
-    double ans = sum / (double)n;
+    cout<<ans<<endl;
 
-    cout << fixed << setprecision(6) << ans << endl;
 }
 int32_t main()
 {

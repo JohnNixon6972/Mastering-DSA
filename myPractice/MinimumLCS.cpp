@@ -1,5 +1,5 @@
 // Code Written by : John Nixon
-// Date: 31:10:2022  Time: 18:27:41
+// Date: 19:10:2022  Time: 21:45:16
 // Copyrights are applicable
 #include <bits/stdc++.h>
 using namespace std;
@@ -59,28 +59,45 @@ void __f(const char *names, Arg1 &&arg1, Args &&...args)
 const int N = 200005;
 void solve()
 {
-    int n, k;
-    cin >> n >> k;
-    vi a;
+    int n;
+    cin >> n;
+
+    string A, B;
+    cin >> A;
+    cin >> B;
+
+    map<char, int> freq1;
+
     for (int i = 0; i < n; i++)
     {
-        int x;
-        cin >> x;
-        a.pb(x);
+        freq1[A[i]]++;
     }
+    map<char, int> freq2;
 
-    sort(all(a));
-    int sum = 0;
-    for (int i = k; i < n - k; i++)
+    for (int i = 0; i < n; i++)
     {
-        sum += a[i];
+        freq2[B[i]]++;
     }
 
-    n -= 2 * k;
+    int ans, a, b;
+    ans = 0;
+    a = 0;
+    b = 0;
 
-    double ans = sum / (double)n;
+    for (int i = 0; i < n; i++)
+    {
+        if (freq1.find(A[i]) != freq1.end())
+        {
+            a = freq1[A[i]];
+        }
+        if (freq2.find(A[i]) != freq1.end())
+        {
+            b = freq2[A[i]];
+        }
+        ans = max(ans,min(a,b));
+    }
 
-    cout << fixed << setprecision(6) << ans << endl;
+    cout<<ans<<endl;
 }
 int32_t main()
 {

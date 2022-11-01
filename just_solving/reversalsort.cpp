@@ -1,5 +1,5 @@
 // Code Written by : John Nixon
-// Date: 31:10:2022  Time: 18:27:41
+// Date: 01:11:2022  Time: 20:17:14
 // Copyrights are applicable
 #include <bits/stdc++.h>
 using namespace std;
@@ -59,8 +59,8 @@ void __f(const char *names, Arg1 &&arg1, Args &&...args)
 const int N = 200005;
 void solve()
 {
-    int n, k;
-    cin >> n >> k;
+    int n, x;
+    cin >> n >> x;
     vi a;
     for (int i = 0; i < n; i++)
     {
@@ -69,18 +69,47 @@ void solve()
         a.pb(x);
     }
 
-    sort(all(a));
-    int sum = 0;
-    for (int i = k; i < n - k; i++)
+    bool is_sorted = true;
+
+    for (int i = 1; i < n; i++)
     {
-        sum += a[i];
+        if (a[i] < a[i - 1])
+        {
+            is_sorted = false;
+            break;
+        }
     }
 
-    n -= 2 * k;
+    if (is_sorted)
+    {
+        cout << "YES" << endl;
+        return;
+    }
 
-    double ans = sum / (double)n;
+    bool is_sat = true;
 
-    cout << fixed << setprecision(6) << ans << endl;
+    for (int i = 1; i < n; i++)
+    {
+        if (a[i] < a[i - 1])
+        {
+            if (a[i] + a[i - 1] > x)
+            {
+                is_sat = false;
+                break;
+            }else{
+                swap(a[i],a[i-1]);
+            }
+        }
+    }
+
+    if (is_sat)
+    {
+        cout << "YES" << endl;
+    }
+    else
+    {
+        cout << "NO" << endl;
+    }
 }
 int32_t main()
 {

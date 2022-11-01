@@ -1,5 +1,5 @@
 // Code Written by : John Nixon
-// Date: 19:10:2022  Time: 01:59:14
+// Date: 19:10:2022  Time: 12:26:53
 // Copyrights are applicable
 #include <bits/stdc++.h>
 using namespace std;
@@ -60,58 +60,84 @@ const int N = 200005;
 void solve()
 {
     int n;
-    vi asteroids;
-    vi dirs;
     cin >> n;
+    vector<pii> asteroids;
     for (int i = 0; i < n; i++)
     {
-        int rad, d;
-        cin >> d >> rad;
-        dirs.pb(d);
-        asteroids.pb(rad);
+        int dir, rad;
+        cin >> dir >> rad;
+
+        if (dir == 0)
+        {
+            rad = -rad;
+        }
+
+        asteroids.pb({rad, i + 1});
     }
 
-    stack<pii> st;
-    for (int i = 0;i<n;i++)
+    stack<pii> stk;
+    for (auto asteroid : asteroids)
     {
-        // stack is not empty and,
-        // current element and top of stack have opposite signs
-        while (!st.empty() && dirs[i] == 0 && st.top().F == 1)
+        if (stk.empty())
         {
-            int diff = -asteroids[i] + st.top().S;
-            // diff is positive negative then current element value is greater
-            // so element on top of stack gets destroyed.
-            if (diff < 0)
-                st.pop();
-            // diff obtained is +ve then element at the top of the stack is greater
-            // current element gets destroyed
-            // we set x = 0 to exit from while loop and not add the current element to stack
-            else if (diff > 0)
-                break;
-            // diff is zero then element at the top of the stack and current element is equal
-            // hence both are destroyed hence pop from stack and set curr ele as zero
-            else if (diff == 0)
+            stk.push(asteroid);
+        }
+        else
+        {
+            pii curr_ast = asteroid;
+            pii top_ast = stk.top();
+            // cout<<asteroid.F<<endl;
+            if (curr_ast.F < 0 && top_ast.F > 0)
             {
-                
-                st.pop();
-                break;
+                while (!stk.empty() && curr_ast.F < 0 && top_ast.F > 0)
+                {
+                    stk.pop();
+                    if (abs(curr_ast.F) > abs(top_ast.F))
+                    {
+                        curr_ast.F = -(abs(curr_ast.F) + abs(top_ast.F));
+                    }
+                    else if (abs(curr_ast.F) < abs(top_ast.F))
+                    {
+                        curr_ast.F = abs(curr_ast.F) + abs(top_ast.F);
+                        curr_ast.S = top_ast.S;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                    if (stk.size() < 1)
+                    {
+                        stk.push(curr_ast);
+                        break;
+                    }
+                    else
+                    {
+                        top_ast = stk.top();
+                    }
+                }
+            }
+            else
+            {
+                stk.push(asteroid);
             }
         }
-        // only is x is not destroyed it is added to the stack
-        if (asteroids[i])
-            st.push({i,asteroids[i]}); 
     }
-    vector<int> afterCollision;
-    while (!st.empty())
+    vi ans;
+    // cout << stk.empty() << endl;
+
+    while (!stk.empty())
     {
-        afterCollision.push_back(st.top().F);
-        st.pop();
+
+        int ast = stk.top().S;
+        ans.pb(ast);
+        stk.pop();
     }
-    reverse(afterCollision.begin(), afterCollision.end());
-    cout << afterCollision.size() << endl;
-    if (afterCollision.size())
+
+    cout << ans.size() << endl;
+    sort(all(ans));
+    if (ans.size())
     {
-        print(afterCollision);
+        print(ans);
     }
 }
 int32_t main()
@@ -125,7 +151,7 @@ int32_t main()
 #endif
     clock_t z = clock();
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while (t--)
         solve();
     cerr << "Run Time : " << ((double)(clock() - z) / CLOCKS_PER_SEC);

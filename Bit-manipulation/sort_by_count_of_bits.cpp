@@ -1,5 +1,5 @@
 // Code Written by : John Nixon
-// Date: 31:10:2022  Time: 18:27:41
+// Date: 21:10:2022  Time: 13:37:22
 // Copyrights are applicable
 #include <bits/stdc++.h>
 using namespace std;
@@ -57,30 +57,51 @@ void __f(const char *names, Arg1 &&arg1, Args &&...args)
     __f(comma + 1, args...);
 }
 const int N = 200005;
+
+vi sort_by_count_of_bits(vector<int> arr){
+    int n = size(arr);
+    vector<int> ans(n);
+    int cnt[32] = {0};
+    for(int i = 0; i < n; i++){
+        int x = arr[i];
+        int c = 0;
+        while(x){
+            if(x & 1) c++;
+            x >>= 1;
+        }
+        cnt[c]++;
+    }
+    for(int i = 1; i < 32; i++){
+        cnt[i] += cnt[i - 1];
+    }
+    for(int i = n - 1; i >= 0; i--){
+        int x = arr[i];
+        int c = 0;
+        while(x){
+            if(x & 1) c++;
+            x >>= 1;
+        }
+        ans[--cnt[c]] = arr[i];
+    }
+    return ans;
+}
+
+
+
 void solve()
 {
-    int n, k;
-    cin >> n >> k;
-    vi a;
-    for (int i = 0; i < n; i++)
+    int n;
+    cin>>n;
+    vi arr;
+    for(int i=0;i<n;i++)
     {
         int x;
-        cin >> x;
-        a.pb(x);
+        cin>>x;
+        arr.pb(x);
     }
 
-    sort(all(a));
-    int sum = 0;
-    for (int i = k; i < n - k; i++)
-    {
-        sum += a[i];
-    }
-
-    n -= 2 * k;
-
-    double ans = sum / (double)n;
-
-    cout << fixed << setprecision(6) << ans << endl;
+    vi ans = sort_by_count_of_bits(arr);
+    print(ans);
 }
 int32_t main()
 {
@@ -93,7 +114,7 @@ int32_t main()
 #endif
     clock_t z = clock();
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--)
         solve();
     cerr << "Run Time : " << ((double)(clock() - z) / CLOCKS_PER_SEC);

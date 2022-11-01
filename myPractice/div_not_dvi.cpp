@@ -1,5 +1,5 @@
 // Code Written by : John Nixon
-// Date: 31:10:2022  Time: 18:27:41
+// Date: 20:10:2022  Time: 22:47:02
 // Copyrights are applicable
 #include <bits/stdc++.h>
 using namespace std;
@@ -57,30 +57,34 @@ void __f(const char *names, Arg1 &&arg1, Args &&...args)
     __f(comma + 1, args...);
 }
 const int N = 200005;
+
+long long gcd(int a, int b)
+{
+  if (b == 0)
+    return a;
+  return gcd(b, a % b);
+}
+ 
+// Function to return LCM of two numbers
+long long lcm(int a, int b)
+{
+    return (a / gcd(a, b)) * b;
+}
+
 void solve()
 {
-    int n, k;
-    cin >> n >> k;
-    vi a;
-    for (int i = 0; i < n; i++)
-    {
-        int x;
-        cin >> x;
-        a.pb(x);
+    int x,y,z;
+    cin>>x>>y>>z;
+
+    if(z == 1){
+        cout<<-1<<endl;
+        return;
     }
 
-    sort(all(a));
-    int sum = 0;
-    for (int i = k; i < n - k; i++)
-    {
-        sum += a[i];
-    }
+    
 
-    n -= 2 * k;
 
-    double ans = sum / (double)n;
 
-    cout << fixed << setprecision(6) << ans << endl;
 }
 int32_t main()
 {

@@ -1,5 +1,5 @@
 // Code Written by : John Nixon
-// Date: 31:10:2022  Time: 18:27:41
+// Date: 29:10:2022  Time: 09:28:33
 // Copyrights are applicable
 #include <bits/stdc++.h>
 using namespace std;
@@ -57,30 +57,47 @@ void __f(const char *names, Arg1 &&arg1, Args &&...args)
     __f(comma + 1, args...);
 }
 const int N = 200005;
-void solve()
+void solve(int t)
 {
-    int n, k;
-    cin >> n >> k;
-    vi a;
-    for (int i = 0; i < n; i++)
+    int m, n, p;
+    cin >> m >> n >> p;
+
+    map<int, vi> mp;
+
+    for (int i = 1; i <= m; i++)
     {
-        int x;
-        cin >> x;
-        a.pb(x);
+        for (int j = 1; j <= n; j++)
+        {
+            int x;
+            cin >> x;
+            mp[i].pb(x);
+        }
     }
 
-    sort(all(a));
-    int sum = 0;
-    for (int i = k; i < n - k; i++)
+    int req = 0;
+
+    vi john = mp[p];
+
+    // print(john);
+    for (int day = 0; day < n; day++)
     {
-        sum += a[i];
+        int day_max = 0;
+        for (int player = 1; player <= m; player++)
+        {
+            if (player == p)
+                continue;
+            day_max = max(day_max, mp[player][day]);
+        }
+        int johns_score = john[day];
+        // cout<<johns_score<<" "<<day_max<<endl;
+        if (johns_score < day_max)
+        {
+            req += abs(johns_score - day_max);
+        }
     }
 
-    n -= 2 * k;
-
-    double ans = sum / (double)n;
-
-    cout << fixed << setprecision(6) << ans << endl;
+    // return req;
+    cout << "Case #" << t+1 << ": " << req << endl;
 }
 int32_t main()
 {
@@ -95,7 +112,8 @@ int32_t main()
     int t = 1;
     cin >> t;
     while (t--)
-        solve();
+        solve(t);
+
     cerr << "Run Time : " << ((double)(clock() - z) / CLOCKS_PER_SEC);
     return 0;
 }

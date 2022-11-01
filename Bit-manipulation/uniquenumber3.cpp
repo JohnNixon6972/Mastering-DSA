@@ -1,5 +1,5 @@
 // Code Written by : John Nixon
-// Date: 31:10:2022  Time: 18:27:41
+// Date: 27:10:2022  Time: 10:47:46
 // Copyrights are applicable
 #include <bits/stdc++.h>
 using namespace std;
@@ -57,30 +57,47 @@ void __f(const char *names, Arg1 &&arg1, Args &&...args)
     __f(comma + 1, args...);
 }
 const int N = 200005;
+void ipdateSum(vi &sumArr, int x)
+{
+    for (int i = 0; i < 32; i++)
+    {
+        int ith_bit = x & (1 << i);
+        if (ith_bit)
+        {
+            sumArr[i]++;
+        }
+    }
+}
+
+int numFromBits(vi &sumArr)
+{
+    int ans = 0;
+    for (int i = 0; i < 32; i++)
+    {
+        ans += sumArr[i] * (1 << i);
+    }
+    return ans;
+}
 void solve()
 {
-    int n, k;
-    cin >> n >> k;
-    vi a;
+    int n;
+    cin >> n;
+    vi a(n);
     for (int i = 0; i < n; i++)
     {
-        int x;
-        cin >> x;
-        a.pb(x);
+        cin >> a[i];
     }
-
-    sort(all(a));
-    int sum = 0;
-    for (int i = k; i < n - k; i++)
+    vi sumArr(32, 0);
+    for (auto x : a)
     {
-        sum += a[i];
+        ipdateSum(sumArr, x);
+    }
+    for (int i = 0; i < 32; i++)
+    {
+        sumArr[i] = sumArr[i] % 3;
     }
 
-    n -= 2 * k;
-
-    double ans = sum / (double)n;
-
-    cout << fixed << setprecision(6) << ans << endl;
+    cout << numFromBits(sumArr) << endl;
 }
 int32_t main()
 {
@@ -93,7 +110,7 @@ int32_t main()
 #endif
     clock_t z = clock();
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--)
         solve();
     cerr << "Run Time : " << ((double)(clock() - z) / CLOCKS_PER_SEC);

@@ -1,5 +1,5 @@
 // Code Written by : John Nixon
-// Date: 31:10:2022  Time: 18:27:41
+// Date: 19:10:2022  Time: 22:42:45
 // Copyrights are applicable
 #include <bits/stdc++.h>
 using namespace std;
@@ -59,28 +59,66 @@ void __f(const char *names, Arg1 &&arg1, Args &&...args)
 const int N = 200005;
 void solve()
 {
-    int n, k;
-    cin >> n >> k;
-    vi a;
-    for (int i = 0; i < n; i++)
+    int n;
+    cin >> n;
+    string given;
+    cin >> given;
+
+    if (given[0] == '0')
     {
-        int x;
-        cin >> x;
-        a.pb(x);
+        for (int i = 0; i < 2 * n; i++)
+        {
+            if (given[i] == '1')
+            {
+                given[i] = '0';
+            }
+          
+        }
+    }
+    vi soln;
+    int count = 0, flag = 0, pre;
+
+    for (int i = 0; i < 2 * n; i++)
+    {
+        if (given[i] == '0')
+        {
+            soln.pb(i);
+        }
+        if (given[i] != given[2 * n - i - 1])
+        {
+            flag = 1;
+            break;
+        }
+    }
+    if (flag)
+    {
+        cout << 1 << endl;
+        cout << 2 * n << endl;
+        return;
     }
 
-    sort(all(a));
-    int sum = 0;
-    for (int i = k; i < n - k; i++)
+    if (soln.size() == 0)
     {
-        sum += a[i];
+        cout << -1 << endl;
+        return;
     }
 
-    n -= 2 * k;
-
-    double ans = sum / (double)n;
-
-    cout << fixed << setprecision(6) << ans << endl;
+    count = 2 * n - 1 - soln.back();
+    for (int i = soln.size() - 1; i >= 1; i--)
+    {
+        if (soln[i] - soln[i - 1] - 1 != count)
+        {
+            flag = 1;
+            cout << 2 << endl;
+            cout << soln[i - 1] + 1 << " " << 2 * n - 1 - soln[i - 1] << endl;
+            break;
+        }
+    }
+    if (flag == 0)
+    {
+        cout << 2 << endl;
+        cout << soln[soln.size() - 2] + 2 << " " << 2 * n - 2 - soln[soln.size() - 2] << endl;
+    }
 }
 int32_t main()
 {

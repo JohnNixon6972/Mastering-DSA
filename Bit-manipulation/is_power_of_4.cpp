@@ -1,5 +1,5 @@
 // Code Written by : John Nixon
-// Date: 31:10:2022  Time: 18:27:41
+// Date: 21:10:2022  Time: 13:18:24
 // Copyrights are applicable
 #include <bits/stdc++.h>
 using namespace std;
@@ -57,30 +57,42 @@ void __f(const char *names, Arg1 &&arg1, Args &&...args)
     __f(comma + 1, args...);
 }
 const int N = 200005;
+bool is_power_of_4(int n)
+{
+    if (n == 0)
+        return false;
+    while (n != 1)
+    {
+        if (n % 4 != 0)
+            return false;
+        n = n / 4;
+    }
+    return true;
+}
+
+vi decode(vi &v,int first)
+{
+    vi ans;
+    ans.push_back(first);
+    for(int i=0;i<v.size();i++)
+    {
+        ans.push_back(ans[i]^v[i]);
+    }
+    return ans;
+}
 void solve()
 {
-    int n, k;
-    cin >> n >> k;
-    vi a;
-    for (int i = 0; i < n; i++)
+    vi encoded;
+    int n,first;
+    cin>>n>>first;
+    for(int i=0;i<n;i++)
     {
         int x;
-        cin >> x;
-        a.pb(x);
+        cin>>x;
+        encoded.pb(x);
     }
-
-    sort(all(a));
-    int sum = 0;
-    for (int i = k; i < n - k; i++)
-    {
-        sum += a[i];
-    }
-
-    n -= 2 * k;
-
-    double ans = sum / (double)n;
-
-    cout << fixed << setprecision(6) << ans << endl;
+    vi decoded = decode(encoded,first);
+    print(decoded);
 }
 int32_t main()
 {
@@ -93,7 +105,7 @@ int32_t main()
 #endif
     clock_t z = clock();
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--)
         solve();
     cerr << "Run Time : " << ((double)(clock() - z) / CLOCKS_PER_SEC);

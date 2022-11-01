@@ -1,5 +1,5 @@
 // Code Written by : John Nixon
-// Date: 31:10:2022  Time: 18:27:41
+// Date: 19:10:2022  Time: 22:14:24
 // Copyrights are applicable
 #include <bits/stdc++.h>
 using namespace std;
@@ -59,28 +59,55 @@ void __f(const char *names, Arg1 &&arg1, Args &&...args)
 const int N = 200005;
 void solve()
 {
-    int n, k;
-    cin >> n >> k;
-    vi a;
-    for (int i = 0; i < n; i++)
-    {
+    int n;
+    cin>>n;
+    vi P(n+1);
+    for(int i=1;i<=n;i++)
+    {   
         int x;
-        cin >> x;
-        a.pb(x);
+        cin>>x;
+        P[i] = x;
     }
 
-    sort(all(a));
-    int sum = 0;
-    for (int i = k; i < n - k; i++)
-    {
-        sum += a[i];
+    if(n==1){
+        cout<<1<<endl;
+        return;
     }
 
-    n -= 2 * k;
+    vi sub(n+1);
 
-    double ans = sum / (double)n;
+    for(int i =2;i<=n;i++){
+        sub[i] = P[i]<P[i-1];
+    }
 
-    cout << fixed << setprecision(6) << ans << endl;
+    vector<pair<bool,int>> ans;
+
+    ans.pb({sub[2],1});
+
+
+    for(int i = 3;i<=n;i++){
+        if(sub[i] == ans[ans.size()-1].F){
+            ans[ans.size()-1].S++;
+        }
+        else{
+            ans.pb({sub[i],1});
+        }
+    }
+
+    ans.pb({0,0});
+
+    int soln = 0;
+
+    for(int i = 0;i<ans.size()-1;i++){
+       soln += ans[i].S * (ans[i].S + 1)/2;
+    }
+
+    for(int i = 0;i<ans.size()-1;i++){
+        if(ans[i].F == 1){
+            soln += ans[i].S*ans[i+1].S;
+        }
+    }
+    cout<<soln+n<<endl;
 }
 int32_t main()
 {

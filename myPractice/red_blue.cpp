@@ -1,5 +1,5 @@
 // Code Written by : John Nixon
-// Date: 31:10:2022  Time: 18:27:41
+// Date: 19:10:2022  Time: 21:52:35
 // Copyrights are applicable
 #include <bits/stdc++.h>
 using namespace std;
@@ -57,30 +57,49 @@ void __f(const char *names, Arg1 &&arg1, Args &&...args)
     __f(comma + 1, args...);
 }
 const int N = 200005;
+int a[111], b[111], dp[111][N];
+int ans;
+void dfs(int start, int x, int y, int n)
+{
+    if (start == n + 1)
+    {
+
+        ans = max(ans, min(x, y));
+        return;
+    }
+
+    if (dp[start][x] >= y && dp[start][x] != 0)
+    {
+        return;
+    }
+    dp[start][x] = y;
+    dfs(start + 1, x + a[start], y, n);
+    dfs(start + 1, x, y + b[start], n);
+}
+
 void solve()
 {
-    int n, k;
-    cin >> n >> k;
-    vi a;
-    for (int i = 0; i < n; i++)
+    int n;
+    cin >> n;
+
+    for (int i = 1; i <= n; i++)
     {
-        int x;
-        cin >> x;
-        a.pb(x);
+        for (int j = 0; j < N; j++)
+        {
+            dp[i][j] = 0;
+        }
     }
-
-    sort(all(a));
-    int sum = 0;
-    for (int i = k; i < n - k; i++)
+    for (int i = 1; i <= n; i++)
     {
-        sum += a[i];
+        cin >> a[i];
     }
-
-    n -= 2 * k;
-
-    double ans = sum / (double)n;
-
-    cout << fixed << setprecision(6) << ans << endl;
+    for (int i = 1; i <= n; i++)
+    {
+        cin >> b[i];
+    }
+    ans = 0;
+    dfs(1, 0, 0, n);
+    cout << ans << endl;
 }
 int32_t main()
 {
