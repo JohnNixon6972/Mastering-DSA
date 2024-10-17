@@ -16,6 +16,7 @@
 |  |
 | ------- |
 | [0031-next-permutation](https://github.com/JohnNixon6972/Mastering-DSA/tree/master/0031-next-permutation) |
+| [0053-maximum-subarray](https://github.com/JohnNixon6972/Mastering-DSA/tree/master/0053-maximum-subarray) |
 | [0073-set-matrix-zeroes](https://github.com/JohnNixon6972/Mastering-DSA/tree/master/0073-set-matrix-zeroes) |
 | [0118-pascals-triangle](https://github.com/JohnNixon6972/Mastering-DSA/tree/master/0118-pascals-triangle) |
 | [0560-subarray-sum-equals-k](https://github.com/JohnNixon6972/Mastering-DSA/tree/master/0560-subarray-sum-equals-k) |
@@ -23,6 +24,7 @@
 ## Dynamic Programming
 |  |
 | ------- |
+| [0053-maximum-subarray](https://github.com/JohnNixon6972/Mastering-DSA/tree/master/0053-maximum-subarray) |
 | [0118-pascals-triangle](https://github.com/JohnNixon6972/Mastering-DSA/tree/master/0118-pascals-triangle) |
 | [1669-minimum-cost-to-cut-a-stick](https://github.com/JohnNixon6972/Mastering-DSA/tree/master/1669-minimum-cost-to-cut-a-stick) |
 ## Sorting
@@ -46,4 +48,8 @@
 |  |
 | ------- |
 | [0031-next-permutation](https://github.com/JohnNixon6972/Mastering-DSA/tree/master/0031-next-permutation) |
+## Divide and Conquer
+|  |
+| ------- |
+| [0053-maximum-subarray](https://github.com/JohnNixon6972/Mastering-DSA/tree/master/0053-maximum-subarray) |
 <!---LeetCode Topics End-->
