@@ -16,6 +16,7 @@
 |  |
 | ------- |
 | [0001-two-sum](https://github.com/JohnNixon6972/Mastering-DSA/tree/master/0001-two-sum) |
+| [0018-4sum](https://github.com/JohnNixon6972/Mastering-DSA/tree/master/0018-4sum) |
 | [0031-next-permutation](https://github.com/JohnNixon6972/Mastering-DSA/tree/master/0031-next-permutation) |
 | [0053-maximum-subarray](https://github.com/JohnNixon6972/Mastering-DSA/tree/master/0053-maximum-subarray) |
 | [0073-set-matrix-zeroes](https://github.com/JohnNixon6972/Mastering-DSA/tree/master/0073-set-matrix-zeroes) |
@@ -38,6 +39,7 @@
 ## Sorting
 |  |
 | ------- |
+| [0018-4sum](https://github.com/JohnNixon6972/Mastering-DSA/tree/master/0018-4sum) |
 | [0075-sort-colors](https://github.com/JohnNixon6972/Mastering-DSA/tree/master/0075-sort-colors) |
 | [0169-majority-element](https://github.com/JohnNixon6972/Mastering-DSA/tree/master/0169-majority-element) |
 | [0229-majority-element-ii](https://github.com/JohnNixon6972/Mastering-DSA/tree/master/0229-majority-element-ii) |
@@ -62,6 +64,7 @@
 ## Two Pointers
 |  |
 | ------- |
+| [0018-4sum](https://github.com/JohnNixon6972/Mastering-DSA/tree/master/0018-4sum) |
 | [0031-next-permutation](https://github.com/JohnNixon6972/Mastering-DSA/tree/master/0031-next-permutation) |
 | [0075-sort-colors](https://github.com/JohnNixon6972/Mastering-DSA/tree/master/0075-sort-colors) |
 | [0287-find-the-duplicate-number](https://github.com/JohnNixon6972/Mastering-DSA/tree/master/0287-find-the-duplicate-number) |
