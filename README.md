@@ -24,6 +24,7 @@
 | [0075-sort-colors](https://github.com/JohnNixon6972/Mastering-DSA/tree/master/0075-sort-colors) |
 | [0118-pascals-triangle](https://github.com/JohnNixon6972/Mastering-DSA/tree/master/0118-pascals-triangle) |
 | [0121-best-time-to-buy-and-sell-stock](https://github.com/JohnNixon6972/Mastering-DSA/tree/master/0121-best-time-to-buy-and-sell-stock) |
+| [0128-longest-consecutive-sequence](https://github.com/JohnNixon6972/Mastering-DSA/tree/master/0128-longest-consecutive-sequence) |
 | [0169-majority-element](https://github.com/JohnNixon6972/Mastering-DSA/tree/master/0169-majority-element) |
 | [0229-majority-element-ii](https://github.com/JohnNixon6972/Mastering-DSA/tree/master/0229-majority-element-ii) |
 | [0287-find-the-duplicate-number](https://github.com/JohnNixon6972/Mastering-DSA/tree/master/0287-find-the-duplicate-number) |
@@ -49,6 +50,7 @@
 | ------- |
 | [0001-two-sum](https://github.com/JohnNixon6972/Mastering-DSA/tree/master/0001-two-sum) |
 | [0073-set-matrix-zeroes](https://github.com/JohnNixon6972/Mastering-DSA/tree/master/0073-set-matrix-zeroes) |
+| [0128-longest-consecutive-sequence](https://github.com/JohnNixon6972/Mastering-DSA/tree/master/0128-longest-consecutive-sequence) |
 | [0169-majority-element](https://github.com/JohnNixon6972/Mastering-DSA/tree/master/0169-majority-element) |
 | [0229-majority-element-ii](https://github.com/JohnNixon6972/Mastering-DSA/tree/master/0229-majority-element-ii) |
 | [0560-subarray-sum-equals-k](https://github.com/JohnNixon6972/Mastering-DSA/tree/master/0560-subarray-sum-equals-k) |
@@ -87,4 +89,8 @@
 | ------- |
 | [0169-majority-element](https://github.com/JohnNixon6972/Mastering-DSA/tree/master/0169-majority-element) |
 | [0229-majority-element-ii](https://github.com/JohnNixon6972/Mastering-DSA/tree/master/0229-majority-element-ii) |
+## Union Find
+|  |
+| ------- |
+| [0128-longest-consecutive-sequence](https://github.com/JohnNixon6972/Mastering-DSA/tree/master/0128-longest-consecutive-sequence) |
 <!---LeetCode Topics End-->
