@@ -4,6 +4,7 @@
 |  |
 | ------- |
 | [0003-longest-substring-without-repeating-characters](https://github.com/JohnNixon6972/Mastering-DSA/tree/master/0003-longest-substring-without-repeating-characters) |
+| [0072-edit-distance](https://github.com/JohnNixon6972/Mastering-DSA/tree/master/0072-edit-distance) |
 | [0394-decode-string](https://github.com/JohnNixon6972/Mastering-DSA/tree/master/0394-decode-string) |
 ## Stack
 |  |
@@ -35,6 +36,7 @@
 |  |
 | ------- |
 | [0053-maximum-subarray](https://github.com/JohnNixon6972/Mastering-DSA/tree/master/0053-maximum-subarray) |
+| [0072-edit-distance](https://github.com/JohnNixon6972/Mastering-DSA/tree/master/0072-edit-distance) |
 | [0118-pascals-triangle](https://github.com/JohnNixon6972/Mastering-DSA/tree/master/0118-pascals-triangle) |
 | [0121-best-time-to-buy-and-sell-stock](https://github.com/JohnNixon6972/Mastering-DSA/tree/master/0121-best-time-to-buy-and-sell-stock) |
 | [1669-minimum-cost-to-cut-a-stick](https://github.com/JohnNixon6972/Mastering-DSA/tree/master/1669-minimum-cost-to-cut-a-stick) |
